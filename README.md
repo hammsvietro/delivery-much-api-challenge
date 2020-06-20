@@ -27,7 +27,7 @@ A API é constituída de apenas uma requisição GET
 
 Para usá-la, após o docker estar rodando, basta chamar:
 
-> http://localhost:3333/recipes/?i=ingrediente1,ingrediente2,ingrediente3 
+http://localhost:3333/recipes/?i=ingrediente1,ingrediente2,ingrediente3 
 
 como estabelecido, pelo menos um ingrediente deve ser passado, e 3 ingredientes como limite
 
@@ -35,8 +35,17 @@ como estabelecido, pelo menos um ingrediente deve ser passado, e 3 ingredientes 
 ## Testes:
 ### foram feitos testes unitários e de integração, para rodá-los é apenas rodar o comando:
 
-``` npm test ```
+``` 
+npm install
+npm test
+ ```
 
 ou
 
-``` yarn test ```  
+```
+yarn
+yarn test 
+```  
+
+
+ps: a versão utilizada do node foi a lts (12.18.1) em versões acima da 14 o typescript pode ter problemas por alteração no fs.watch() porém nao deverá ter problemas
