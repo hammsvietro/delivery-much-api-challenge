@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 
 import getRecipes from '../services/PuppyAPI';
 import addGifLinkToRecipes from '../utils/AddGifLinkToRecipes';
-import trimTitleString from '../utils/TrimTitleString';
 
 
 class RecipeController {
@@ -19,9 +18,6 @@ class RecipeController {
       
       return res.status(errorCode).send({ error: recipes.error });
     } 
-      
-
-    trimTitleString(recipes);
 
     await addGifLinkToRecipes(recipes);
     

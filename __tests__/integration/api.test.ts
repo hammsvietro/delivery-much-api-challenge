@@ -5,7 +5,7 @@ import app from '../../src/app';
 
 describe('Assert Array Size Middleware Success Tests', () => {
   it('Should return status 200 and an object with ingredients and a list of recipes when making a valid api call', async () => {
-    jest.setTimeout(20000);
+    jest.setTimeout(30000);
     const response = await request(app).get('/recipes/?i=egg,bacon');
 
     expect(response.body.ingredients.length).toBe(2);

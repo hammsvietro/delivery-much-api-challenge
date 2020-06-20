@@ -1,7 +1,7 @@
-FROM node:7-slim
+FROM node:11-slim
 WORKDIR /usr/app
 COPY package.json ./
 RUN npm install
 COPY . .
-EXPOSE 9000
+EXPOSE 3333
 CMD ["npm","start"]
