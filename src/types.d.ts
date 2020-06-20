@@ -10,6 +10,3 @@ export interface IApiResponse {
     results: IRecipe[]
   }
 }
-export interface IApiError {
-  error: string;
-}

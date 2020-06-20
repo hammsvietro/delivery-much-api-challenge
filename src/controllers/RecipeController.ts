@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 
 import getRecipes from '../services/PuppyAPI';
-import addGifLinkToRecipe from '../utils/addGifLinkToRecipe';
+import addGifLinkToRecipes from '../utils/AddGifLinkToRecipes';
+import trimTitleString from '../utils/TrimTitleString';
 
-import { IRecipe } from '../types';
 
 class RecipeController {
   async index(req: Request, res: Response) {
@@ -12,12 +12,19 @@ class RecipeController {
 
     const ingredients = i.split(',');
 
-    const recipes: IRecipe[] = await getRecipes(i);
+    const recipes = await getRecipes(i);
 
-    for (const recipe of recipes) {
-      await addGifLinkToRecipe(recipe);
-    }
+    if(recipes.error) {
+      const errorCode = recipes.error.includes('api is not working') ? 502 : 404;
+      
+      return res.status(errorCode).send({ error: recipes.error });
+    } 
+      
 
+    trimTitleString(recipes);
+
+    await addGifLinkToRecipes(recipes);
+    
     return res.status(200).send({
       ingredients,
       recipes
