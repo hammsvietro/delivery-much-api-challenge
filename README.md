@@ -13,9 +13,7 @@ Para o Linting usei o ESLint com o plugin de Typescript
   Como solicitado é necessário que a API rode no docker, então os comandos a seguir deverão ser executados:
   > sudo docker build -t challenge-delivery-much .
   
-  > sudo docker run -it -p 9000:3333 challenge-delivery-much
-
-
+  > sudo docker run -it -p 9000:3333 -d challenge-delivery-much
 
 ## Testes:
 ### foram feitos testes unitários e de integração, para rodá-los é apenas rodar o comando:
