@@ -8,21 +8,25 @@ dotenv.config();
 
 
 const api = axios.create({
-  baseURL: `https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=`  
+  baseURL: `https://api.giphy.com/v1/gifs/`
 });
 
 async function getRecipeGifLink(recipeName: string): Promise<string> {
   
-  // by default the limit will be set to one to minimize response time
-  const query = `${recipeName}&limit=1`;
+  const query = `search?api_key=${process.env.GIPHY_API_KEY}&q=${recipeName}&limit=1`;
 
   let response;
   try {
     response = await api.get(query);
   } catch (error) {
-    return 'api not available or no GIF corresponding to the recipe was found :(';
+    return 'Giphy api not available :(';
   }
-  return response.data[0].url;
+
+  if(response.data.data.length === 0) {
+    return 'No available GIF of the recipe :(';
+  }
+
+  return response.data.data[0].url;
 }
 
 export default getRecipeGifLink;
