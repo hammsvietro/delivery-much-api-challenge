@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node-dev src/server.ts",
-    "test": "jest --runInBand --forceExit"
+    "test": "NODE_ENV=test jest --runInBand"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",

@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import router from './routes';
+import testRouter from '../__tests__/routes';
 
 dotenv.config();
 
@@ -27,8 +28,8 @@ class App {
 
   router() {
     this.app.use(router);
+    if(process.env.NODE_ENV === 'test') this.app.use(testRouter);
   }
-
 }
 
 

@@ -1,8 +1,6 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
 
-import { IGiphyAPIParams } from '../types';
-
 dotenv.config();
 
 
@@ -20,6 +18,7 @@ async function getRecipeGifLink(recipeName: string): Promise<string> {
     response = await api.get(query);
   } catch (error) {
     return 'Giphy api not available :(';
+    
   }
 
   if(response.data.data.length === 0) {
